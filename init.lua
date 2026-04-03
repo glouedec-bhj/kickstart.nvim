@@ -628,6 +628,8 @@ require('lazy').setup({
         --
         -- But for many setups, the LSP (`ts_ls`) will work just fine
         -- ts_ls = {},
+        ty = {},
+        ruff = {},
 
         stylua = {}, -- Used to format Lua code
 
