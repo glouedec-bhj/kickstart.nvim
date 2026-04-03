@@ -5,7 +5,7 @@ return {
   ---@type snacks.Config
   opts = {
     bigfile = { enabled = true },
-    dashboard = { enabled = true },
+    dashboard = { enabled = false },
     explorer = { enabled = true },
     indent = { enabled = true },
     input = { enabled = true },
@@ -13,7 +13,10 @@ return {
       enabled = true,
       timeout = 3000,
     },
-    picker = { enabled = true },
+    ---@type snacks.picker.Config
+    picker = {
+      enabled = true,
+    },
     quickfile = { enabled = true },
     scope = { enabled = true },
     scroll = { enabled = false },
@@ -28,6 +31,13 @@ return {
   keys = {
     -- Top Pickers & Explorer
     {
+      '<leader>bD',
+      function()
+        Snacks.bufdelete.all()
+      end,
+      desc = 'Delete all buffer',
+    },
+    {
       '<leader><space>',
       function()
         Snacks.picker.smart()
@@ -37,7 +47,7 @@ return {
     {
       '<leader>,',
       function()
-        Snacks.picker.buffers()
+        Snacks.picker.buffers { current = false, sort_lastused = true }
       end,
       desc = 'Buffers',
     },
